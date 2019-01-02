@@ -36,7 +36,7 @@ $(function() {
 });
 
 $(document).ready(function(){
-    $('.predictButton').on('click', function() {
+    $('.predictButton').click(function() {
         let image_id = $('.image-upload').val();
         let image_ids = document.getElementsByClassName("image-upload");
         console.log(image_ids.length);

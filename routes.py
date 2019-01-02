@@ -11,7 +11,7 @@ from models import PredictRawVeggies
 
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = 'Uploads'
+app.config['UPLOAD_FOLDER'] = 'uploads'
 my_pred = PredictRawVeggies()
 
 
