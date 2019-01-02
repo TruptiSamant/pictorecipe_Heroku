@@ -35,14 +35,14 @@ def index():
                 image.save(filepath)
                 print(filepath)
         return ('', 204)
-    print(my_pred.labels)
+    # print(my_pred.labels)
     return render_template('index.html')
 
 #####################################################################################
 @app.route('/update', methods=['POST'])
 def update():
 
-    print(my_pred.labels)
+    print(f"In update {my_pred.labels}")
     # get the list
     filenames = []
     image_names = request.form.getlist('image[]')
@@ -55,8 +55,8 @@ def update():
             filenames.append(image_name.split('\\')[-1:][0])
 
         predictions = my_pred.call_predict(filenames, app.config['UPLOAD_FOLDER'])
-        print(f"predictions : {predictions}")
-    # print(filenames)
+        # print(f"predictions : {predictions}")
+        # print(filenames)
 
     return jsonify({'result': 'success', 'predictions': predictions})
 
