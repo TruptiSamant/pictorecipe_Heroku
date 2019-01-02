@@ -56,7 +56,7 @@ class PredictRawVeggies:
         predictions = []
         #predict
         for image_name in images:
-            image_path = folder+ "/" +image_name
+            image_path = folder+ "/" + image_name
             print(f"imagepath: {image_path}")
             test_image = keras.preprocessing.image.load_img(image_path, target_size=(224,224), grayscale=False)
             test_image = image.img_to_array(test_image)

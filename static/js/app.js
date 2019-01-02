@@ -7,7 +7,7 @@ $(".imgAdd").click(function(){
                     <div class="imagePreview"></div> \
                     <div class="upload-options"> \
                     <label><input type="file" name="file" class="image-upload" accept="image/*" /></label> \
-                    </div></div></div>\
+                    </div></div> \
                     <i class="fa fa-times del"></i></div>');
 });
 
@@ -30,6 +30,28 @@ $(function() {
             reader.onloadend = function(){ // set image data as background of div
                 //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
             uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url("+this.result+")");
+            var form_data = new FormData();
+            $.each($(".image-upload"), function (i, obj) {
+                $.each(obj.files, function (j, file) {
+                    form_data.append('file', file); // is the var i against the var j, because the i is incremental the j is ever 0
+                    console.log(file);
+                });
+            });
+
+            // form_data.append('file', $('.image-upload').prop('files')[0]);
+            console.log(form_data);
+
+            req = $.ajax({
+                url : '/',
+                type : 'POST',
+                contentType:false,
+                processData:false,
+                cache: false,
+                data : form_data,
+                success: function(data) {
+                    console.log('Success!');
+                },
+            });
             }
         }
     });

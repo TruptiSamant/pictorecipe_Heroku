@@ -1,3 +1,4 @@
+
 from flask import Flask, jsonify, render_template, url_for, request, redirect
 import json
 import os
@@ -18,13 +19,17 @@ my_pred = PredictRawVeggies()
 # # Define routes ###############################################################
 @app.route("/",  methods=['GET', 'POST'])
 def index():
+    print("upload click")
     if request.method == 'POST':
+        print("POST click")
         if request.files.get('file'):
+            print("File is there")
 #
             images = request.files.getlist("file") #convert multidict to dict
+            print(f"Images: {images}")
             # Remove all the files
             files = glob.glob(app.config['UPLOAD_FOLDER']+'/*')
-            print(files)
+            # print(files)
             for f in files:
                 os.remove(f)
 
