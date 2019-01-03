@@ -6,7 +6,7 @@ $(".imgAdd").click(function(){
                     <div class="form-group"> \
                     <div class="imagePreview"></div> \
                     <div class="upload-options"> \
-                    <label><input type="file" name="file" class="image-upload" accept="image/*" /></label> \
+                    <label><input type="file" name="file" class="image-upload" accept="image/*;capture=camera" /></label> \
                     </div></div> \
                     <i class="fa fa-times del"></i></div>');
 });
