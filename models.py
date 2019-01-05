@@ -18,12 +18,16 @@ class PredictRawVeggies:
         self.img_width = 224
         self.img_height = 224
 
-        self.create_model()
-
-        self.model_final._make_predict_function()
         #get the labels
         df_labels = pd.read_csv("labels.csv")
+        df_labels = df_labels.sort_values(by=['Index'])
         self.labels= list(df_labels['Label'])
+        self.num_labels = len(self.labels)
+
+        self.create_model()
+        
+        self.model_final._make_predict_function()
+
 
     ############################################################################
     def create_model(self):
@@ -42,7 +46,7 @@ class PredictRawVeggies:
         x = Dropout(0.2)(x)
         x = Dense(128, activation="relu")(x)
         #Add output layer
-        predictions = Dense(22, activation="softmax")(x)
+        predictions = Dense(self.num_labels, activation="softmax")(x)
         #create the final model
         self.model_final = Model(inputs = model.input, outputs = predictions)
         #load the weights

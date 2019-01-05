@@ -33,13 +33,19 @@ def index():
             for f in files:
                 os.remove(f)
 
+            filenames = []
             #save the image
             for image in images:     #image will be the key
                 # create a path to the uploads folder
                 filepath = os.path.join(app.config['UPLOAD_FOLDER'], image.filename)
                 image.save(filepath)
-                print(filepath)
-        return ('', 204)
+                filenames.append(image.filename)
+                print(filenames)
+
+            predictions = my_pred.call_predict(filenames, app.config['UPLOAD_FOLDER'])
+
+        return jsonify({'result': 'success', 'predictions': predictions})
+        # return ('', 204)
     # print(my_pred.labels)
     return render_template('index.html')
 

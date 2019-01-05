@@ -1,7 +1,7 @@
 $(".imgAdd").click(function(){
   $(this).closest(".row").find('.imgAdd').before(
                     '<div class="col-lg-3 col-sm-3 imgUp"> \
-                    <figcaption class="figure-caption" id="image-name">A caption for the below image.</figcaption>\
+                    <figcaption class="figure-caption" id="image-name" placeholder="Image name here."></figcaption>\
                     <br>\
                     <div class="form-group"> \
                     <div class="imagePreview"></div> \
@@ -49,7 +49,15 @@ $(function() {
                 cache: false,
                 data : form_data,
                 success: function(data) {
-                    console.log('Success!');
+                    console.log('------------------------------');
+                    // console.log(data.predictions[0]);
+
+                    let image_ids = document.getElementsByClassName("image-upload");
+                    let captions = document.getElementsByClassName("figure-caption");
+                    for (i = 0; i < captions.length; i++) {
+                        captions[i].textContent = data.predictions[i][1]
+                        console.log(data.predictions[i][1]);
+                    }
                 },
             });
             }
