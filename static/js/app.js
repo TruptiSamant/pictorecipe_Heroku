@@ -1,7 +1,7 @@
 $(".imgAdd").click(function(){
   $(this).closest(".row").find('.imgAdd').before(
                     '<div class="col-lg-3 col-sm-3 imgUp"> \
-                    <figcaption class="figure-caption" id="image-name" placeholder="Image name here."></figcaption>\
+                    <figcaption class="figure-caption" id="image-name" placeholder="Image name here.">"Image name here."</figcaption>\
                     <br>\
                     <div class="form-group"> \
                     <div class="imagePreview"></div> \
