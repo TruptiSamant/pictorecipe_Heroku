@@ -1,0 +1,2 @@
+
+Spoonacular_API_key = 'KCT4CnROiamshd68LYf7i0cs5LxWp1a0wmdjsnDdOL8WlDNtGW'

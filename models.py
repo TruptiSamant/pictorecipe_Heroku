@@ -25,7 +25,7 @@ class PredictRawVeggies:
         self.num_labels = len(self.labels)
 
         self.create_model()
-        
+
         self.model_final._make_predict_function()
 
 
@@ -70,8 +70,14 @@ class PredictRawVeggies:
             predict = self.model_final.predict(test_image)
             # print(predict)
             zip_pred= zip(predict[0], self.labels)
+            # if the prediction is high then only senf the value
+            match_found = False
             for pred_value, pred in zip_pred:
-                if (pred_value > 0.7):
+                if (pred_value > 0.8):
+                    match_found = True
                     predictions.append((image_name, pred))
+
+            if(not(match_found)):
+                predictions.append((image_name, ""))
 
         return predictions

@@ -1,11 +1,8 @@
-{% extends "base.html" %}
+{% extends "index.html" %}
 {% block content %}
 <br><div class="container">
     <form class="form-inline"  method="post"  enctype=multipart/form-data>
     <div class="row">
-            <div class="col-lg-12 col-sm-12 note">
-                <p class="help-block">Please upload another image if prediction is wrong</p>
-            </div>
            <div class="col-lg-3 col-sm-3 imgUp">
              <figcaption class="figure-caption" id="image-name">Click to Predict.</figcaption>
              <br>
@@ -24,24 +21,10 @@
        </form><!-- col-2 -->
        <i class="fa fa-plus imgAdd"></i>
    </div><!-- row -->
-   <div class="row">
-       <div class="col-lg-3 col-sm-3 recipe">
-           <button class="btn btn-primary float-right recipeButton" image_id="image"> Show Recipes </button>
-        </div>
-       <div class="col-lg-3 col-sm-3 cuisines ">
-           <select id="cuisine_dd">
-                {% for each in cuisines %}
-                  <option value="{{each}}">{{each}}</option>
-                {% endfor %}
-            </select>
-        </div>
+   <div class="row"> -->
+       <button class="btn btn-primary RecipeButton" image_id="image"> Show Recipes </button>
    </div>
 
 </div><!-- container -->
 
 {% endblock %}
-<!-- <div class="upload-options">
-  <label>
-    <input type="file" class="image-upload" accept="image/*" />
-  </label>
-</div> -->

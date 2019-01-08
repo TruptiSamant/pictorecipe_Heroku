@@ -1,3 +1,13 @@
+
+function init(){
+    console.log("in load")
+    $('.recipeButton').prop('disabled', true);
+    $('.cuisines').prop('disabled', true);
+    $('.note').hide();
+}
+
+
+// Add the image
 $(".imgAdd").click(function(){
   $(this).closest(".row").find('.imgAdd').before(
                     '<div class="col-lg-3 col-sm-3 imgUp"> \
@@ -12,11 +22,12 @@ $(".imgAdd").click(function(){
 });
 
 
+//dlete the image box
 $(document).on("click", "i.del" , function() {
 	$(this).parent().remove();
 });
 
-
+//Upload the image and predict
 $(function() {
     $(document).on("change",".image-upload", function(){
         var uploadFile = $(this);
@@ -50,13 +61,25 @@ $(function() {
                 data : form_data,
                 success: function(data) {
                     console.log('------------------------------');
-                    // console.log(data.predictions[0]);
+                    console.log(data)
 
                     let image_ids = document.getElementsByClassName("image-upload");
                     let captions = document.getElementsByClassName("figure-caption");
                     for (i = 0; i < captions.length; i++) {
-                        captions[i].textContent = data.predictions[i][1]
-                        console.log(data.predictions[i][1]);
+                        let name = data.predictions[i][1];
+                        console.log(name);
+                        if (name == ""){
+                            captions[i].textContent = "Please try again"
+                            $('.recipeButton').prop('disabled', true);
+                            $('.cuisines').prop('disabled', true);
+                            $('.note').hide();
+                        }
+                        else{
+                            captions[i].textContent = name
+                            $('.recipeButton').prop('disabled', false)
+                            $('.cuisines').prop('disabled', false);
+                            $('.note').show();
+                        }
                     }
                 },
             });
@@ -65,35 +88,29 @@ $(function() {
     });
 });
 
-$(document).ready(function(){
-    $('.predictButton').click(function() {
-        let image_id = $('.image-upload').val();
-        let image_ids = document.getElementsByClassName("image-upload");
-        console.log(image_ids.length);
-        var image_names = [];
-        var i;
-        for (i = 0; i < image_ids.length; i++) {
-            // console.log(image_ids[i].value);
-            image_names.push(image_ids[i].value)
-        }
-        console.log("_____________________________")
-        console.log(image_names)
+// Show the recipe when button click
+$(document).on("click",".recipeButton", function(){
+    console.log('RecipeButton click ');
+    var ingredients = []
+    let captions = document.getElementsByClassName("figure-caption")
+    for (i = 0; i < captions.length; i++) {
+        ingredients.push(captions[i].textContent)
+    }
+    console.log(ingredients);
+    var e = document.getElementById("cuisine_dd");
+    var cuisine = e.options[e.selectedIndex].value;
+    console.log(cuisine);
 
-        req = $.ajax({
-            url : '/update',
-            type : 'POST',
-            data : {image : image_names}
-        });
-
-        req.done(function(data) {
-            console.log('------------------------------');
-            console.log(data.predictions[0]);
-
-            let image_ids = document.getElementsByClassName("image-upload");
-            let captions = document.getElementsByClassName("figure-caption");
-            for (i = 0; i < captions.length; i++) {
-                captions[i].textContent = data.predictions[i][1]
-            }
-        });
+    req = $.ajax({
+        url : '/find_recipe',
+        type : 'POST',
+        contentType:false,
+        processData:false,
+        cache: false,
+        data: JSON.stringify({'ingredients': ingredients, 'cuisine':cuisine}),
+        contentType: "application/json; charset=utf-8",
+        success: function(dat) { console.log(dat); }
+        // success: function(data) {
+        // };
     });
 });
