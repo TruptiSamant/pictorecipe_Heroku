@@ -10,7 +10,7 @@ function init(){
 // Add the image
 $(".imgAdd").click(function () {
     $(this).closest(".row").find('.imgAdd').before(
-        '<div class="col-lg-3 col-sm-3 imgUp"> \
+                     '<div class="col-lg-3 col-sm-3 imgUp">\
                       <figcaption class="figure-caption" id="image-name" placeholder="Image name here.">Upload to Predict</figcaption>\
                       <br>\
                       <div class="form-group"> \
@@ -115,7 +115,7 @@ $(document).on("click",".recipeButton", function(){
         data: JSON.stringify({'ingredients': ingredients, 'cuisine':cuisine}),
         contentType: "application/json; charset=utf-8",
         success: function(data) {
-            $("html").append(data)
+            $("recipes.html").add(data);
             console.log(data);
         }
     });

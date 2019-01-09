@@ -36,33 +36,8 @@
             </select>
         </div>
    </div>
-   <div id="products" class="row view-group">
-       {% if object_list %}
-               <div class="item col-xs-4 col-lg-4">
-                   <div class="thumbnail card">
-                       <div class="img-event">
-                           <img class="group list-group-image img-fluid" src="http://placehold.it/400x250/000/fff" alt="" />
-                       </div>
-                       <div class="caption card-body">
-                           <h4 class="group card-title inner list-group-item-heading">
-                               Product title</h4>
-                           <p class="group inner list-group-item-text">Hi</p>
-                           <div class="row">
-                               <div class="col-xs-12 col-md-6">
-                                   <p class="lead">
-                                       $21.000</p>
-                               </div>
-                               <div class="col-xs-12 col-md-6">
-                                   <a class="btn btn-success" href="http://www.jquery2dotnet.com">Add to cart</a>
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-        {% endif %}
-    </div>
+   {% include "recipes.html" %}
 </div>
-
 <div>
   {% include "about.html" %}
   {% include "team.html" %}

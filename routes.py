@@ -68,7 +68,7 @@ def find_recipe():
         # print(f'ingredients {ingredients}')
         print(getdict())
 
-    return jsonify({'data': render_template('index.html', object_list=["Hi", "How are you"])})
+    return jsonify({'data': render_template('recipes.html', object_list=["hi"])})
 
 
 # ###########################################################################
