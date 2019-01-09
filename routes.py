@@ -5,7 +5,7 @@ import os
 import glob
 from models import PredictRawVeggies
 import pandas as pd
-#from bson import json_util
+from recipes import getdict
 # import app
 #from app import app
 # from app import retrieve_population_data
@@ -67,7 +67,7 @@ def find_recipe():
         print(f'cuisine {cuisine}')
         print(f'ingredients {ingredients}')
 
-    return jsonify({'result': 'success', 'predictions': "predictions"})
+    return jsonify({'result': 'success', 'recipes': getdict()})
 
 
 # ###########################################################################

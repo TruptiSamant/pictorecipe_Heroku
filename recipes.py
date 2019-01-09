@@ -39,19 +39,41 @@ def getRecipe(cuisine, ingredients):
     df = pd.read_csv(os.path.join('recipes', 'recipes.csv'), skipinitialspace=True)
 
     corn_df = df[df['Indian'].str.contains("corn")]
-    print(corn_df)
+    recipe_link_list = [row['Indian'] for index, row in corn_df.iterrows()]
 
-    # indianRecipes_df = pd.read_csv(os.path.join('recipes', cuisine + '.csv'))
-    # print(indianRecipes_df[ingredients])
-    # cuisines_list = glob.glob("recipes/*.csv")
-    # cuisines_df = pd.read_csv(cuisines_list[0])
-        # cuisines = []
-        # for cuisine in cuisines_list:
-        #     a = cuisine.split("\\")[-1:]
-        #     b = a[0].split(".")[0:1]
-        #     cuisines.append(b[0])
-    # else:
-    #     return False
-    return True
+    print(recipe_link_list[0])
 
-getRecipe('Indian', 'Tomato')
+    #make a API call and get the recipe
+    result = getRecipeByUrl(recipe_link_list[0])
+    print(result)
+    #store the information
+    recipe_list = []
+    info = {}
+    try:
+        info = {'title': result.json()['title'],
+                'sourceUrl': result.json()['sourceUrl'],
+                'cookingMinutes': result.json()['cookingMinutes'],
+                'image': result.json()['image'],
+                'instructions': result.json()['instructions'],
+                'ingredients' : [key['originalString'] for key in result.json()['extendedIngredients']]
+                }
+    except:
+        print("Recipe not found")
+
+    recipe_list.append(info)
+
+    print(recipe_list)
+
+    return recipe_list
+
+# getRecipe('Indian', 'Tomato')
+
+def getdict():
+    return [{'title': 'spinach corn sandwich',
+    'sourceUrl': 'https://hebbarskitchen.com/spinach-corn-sandwich-recipe/',
+    'cookingMinutes': 10,
+    'image': 'https://spoonacular.com/recipeImages/1047695-556x370.jpg',
+    'instructions': 'Instructionsfirstly, in a large tawa heat 1 tsp butter and saute 2 tbsp onion.',
+    'ingredients': ['1 tsp butter', '2 tbsp onion finely chopped', '1 cup palak / spinach finely chopped']}]
+
+# print(getdict())
