@@ -114,8 +114,9 @@ $(document).on("click",".recipeButton", function(){
         cache: false,
         data: JSON.stringify({'ingredients': ingredients, 'cuisine':cuisine}),
         contentType: "application/json; charset=utf-8",
-        success: function(dat) { console.log(dat); }
-        // success: function(data) {
-        // };
+        success: function(data) {
+            $("html").append(data)
+            console.log(data);
+        }
     });
 });

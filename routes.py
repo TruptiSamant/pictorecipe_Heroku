@@ -64,10 +64,11 @@ def find_recipe():
         data = request.get_json()
         ingredients = data['ingredients']
         cuisine = data['cuisine']
-        print(f'cuisine {cuisine}')
-        print(f'ingredients {ingredients}')
+        # print(f'cuisine {cuisine}')
+        # print(f'ingredients {ingredients}')
+        print(getdict())
 
-    return jsonify({'result': 'success', 'recipes': getdict()})
+    return jsonify({'data': render_template('index.html', object_list=["Hi", "How are you"])})
 
 
 # ###########################################################################
