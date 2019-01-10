@@ -77,8 +77,8 @@ def getRecipe(cuisine, ingredients):
     print(recipe_link_list[0])
 
     #make a API call and get the recipe
-    result = getRecipeByUrl(recipe_link_list[0])
-    print(result)
+    # result = getRecipeByUrl(recipe_link_list[0])
+    # print(result)
     #store the information
     recipe_list = []
     info = {}
@@ -115,4 +115,4 @@ def getdict():
     'instructions': 'Instructionsfirstly, in a large tawa heat 1 tsp butter and saute 2 tbsp onion.',
     'ingredients': ['1 tsp butter', '2 tbsp onion finely chopped', '1 cup palak / spinach finely chopped']}]
 
-print(Spoonacular_API_key)
+# print(Spoonacular_API_key)

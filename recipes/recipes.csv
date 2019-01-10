@@ -1,13 +1,18 @@
-type, Indian
-main,https://hebbarskitchen.com/onion-pakoda-recipe-kanda-bhaji/
-main,https://hebbarskitchen.com/onion-tomato-chutney-recipe/
-main,https://hebbarskitchen.com/onion-paratha-recipe-pyaz-ka-paratha/
-main,https://hebbarskitchen.com/tomato-onion-rasam/
-main,https://hebbarskitchen.com/spinach-corn-sandwich-recipe/
-main,https://hebbarskitchen.com/baby-corn-masala-recipe-baby-corn-gravy/
-main,https://hebbarskitchen.com/paneer-popcorn-recipe-paneer-snacks/
-main,https://hebbarskitchen.com/corn-curry-recipe-sweet-corn-sabzi/
-main,https://hebbarskitchen.com/tomato-shorba-recipe-tamatar-shorba/
-main,vhebbarskitchen.com/tomato-saar-recipe-tomato-curry-recipe/
-main,https://hebbarskitchen.com/cream-tomato-soup-recipe-tomatoe-soup/
-main,https://hebbarskitchen.com/tomato-rice-recipe-thakali-rice/
+type, Indian,Italian
+main,https://hebbarskitchen.com/onion-pakoda-recipe-kanda-bhaji/,http://www.italianfoodforever.com/2012/05/spinach-ricotta-cheese-savory-tart/
+main,https://hebbarskitchen.com/onion-tomato-chutney-recipe/,http://www.italianfoodforever.com/2014/01/spinach-puffs/
+main,https://hebbarskitchen.com/onion-paratha-recipe-pyaz-ka-paratha/,http://www.italianfoodforever.com/2014/04/spinach-rice-crustless-pie/
+main,https://hebbarskitchen.com/tomato-onion-rasam/,http://www.italianfoodforever.com/2016/07/sunflower-spinach-puff-pastry-tart/
+main,https://hebbarskitchen.com/spinach-corn-sandwich-recipe/,http://www.italianfoodforever.com/2016/07/sunflower-spinach-puff-pastry-tart/
+main,https://hebbarskitchen.com/baby-corn-masala-recipe-baby-corn-gravy/,http://www.italianfoodforever.com/2019/01/sauteed-garlicky-spinach/
+main,https://hebbarskitchen.com/paneer-popcorn-recipe-paneer-snacks/,http://www.italianfoodforever.com/2012/08/grilled-peppers-onions/
+main,https://hebbarskitchen.com/corn-curry-recipe-sweet-corn-sabzi/,http://www.italianfoodforever.com/2011/01/barley-stuffed-peppers/
+main,https://hebbarskitchen.com/tomato-shorba-recipe-tamatar-shorba/,http://www.italianfoodforever.com/2008/05/stuffed-peppers/
+main,https://hebbarskitchen.com/tomato-saar-recipe-tomato-curry-recipe/,https://www.italianfoodforever.com/2015/09/roasted-fennel-with-onions-guanciale-finocchi-arrostiti/
+main,https://hebbarskitchen.com/cream-tomato-soup-recipe-tomatoe-soup/,http://www.italianfoodforever.com/2008/06/stuffed-onions/
+main,https://hebbarskitchen.com/tomato-rice-recipe-thakali-rice/,http://www.italianfoodforever.com/2009/06/roasted-onions/
+main,,https://www.italianfoodforever.com/2014/02/cheesy-potato-broccoli-torta/
+main,,https://www.italianfoodforever.com/2010/02/broccoli-bisque-with-gremolata/
+main,,https://www.italianfoodforever.com/2008/08/roasted-broccoli/
+main,,https://www.italianfoodforever.com/2018/06/broccoli-blueberry-mango-salad/
+main,,https://www.italianfoodforever.com/2012/11/orecchiette-with-broccoli-rabe-sun-dried-tomatoes-goat-cheese/

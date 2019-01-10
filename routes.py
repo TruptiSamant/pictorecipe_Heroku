@@ -48,9 +48,10 @@ def index():
     else:
         # Get the cusines from the file list
         cuisines_list = glob.glob("recipes/*.csv")
+        print(cuisines_list)
         cuisines_df = pd.read_csv(cuisines_list[0])
 
-        print(list(cuisines_df)[1:])
+        print(list(cuisines_df))
 
     return render_template('index.html', cuisines = list(cuisines_df)[1:])
 
