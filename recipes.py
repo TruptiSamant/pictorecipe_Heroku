@@ -111,7 +111,6 @@ def getLinksFromcsv(cuisine="Indian", ingredients=[]):
     #make everything lower case
     ingredients= [x.lower().strip() for x in ingredients]
     cuisine = cuisine.lower().strip()
-    print(f"cuisine ={cuisine} ingredients {ingredients} ")
 
     #get the ingredients whoes recipes we have saved
     df = pd.read_csv(os.path.join('recipes', 'recipes.csv'), skipinitialspace=True)
@@ -120,6 +119,8 @@ def getLinksFromcsv(cuisine="Indian", ingredients=[]):
     #get the synonyms and append to ingredients
     syn_df = pd.read_csv(os.path.join('recipes', 'synonyms.csv'), skipinitialspace=True)
     syn_df.columns = map(str.lower, syn_df.columns)
+    syn_df.dropna(inplace=True)
+    print(syn_df)
 
     #if syninym found append to ingredient
     for ingredient in ingredients:
@@ -127,7 +128,8 @@ def getLinksFromcsv(cuisine="Indian", ingredients=[]):
             ingredients.extend(syn_df[ingredient].tolist())
         except:
             pass
-    # print(ingredients)
+    print(ingredients)
+
     recipe_links_list = []
     #find the recipes
     try:
@@ -138,7 +140,8 @@ def getLinksFromcsv(cuisine="Indian", ingredients=[]):
 
     return recipe_links_list
 
-# getRecipe('Indian', 'Tomato')
+# getLinksFromcsv('Indian', ['Spinach'])
+
 '''
 getdict()
 Testing
@@ -156,6 +159,3 @@ def getdict():
     'image': 'https://hebbarskitchen.com/wp-content/uploads/mainPhotos/onion-tomato-chutney-recipe-tomato-onion-chutney-recipe-1.jpeg',
     'instructions': 'Instructionsfirstly, in a large tawa heat 1 tsp butter and saute 2 tbsp onion.',
     'ingredients': ['1 tsp butter', '2 tbsp onion finely chopped', '1 cup palak / spinach finely chopped']}]
-
-print(glob.glob("uploads"+'/*')[0])
-# getRecipes("Indian", ["Tomato"])

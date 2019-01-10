@@ -70,6 +70,7 @@ def find_recipe():
         #Get the links
         recipe_links = getLinksFromcsv(cuisine, ingredients)
         shuffle(recipe_links)
+        print(recipe_links)
 
         #fine the recepies
         recipes_list = getRecipes(recipe_links[0:2]);
