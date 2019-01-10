@@ -6,7 +6,7 @@ import glob
 from models import PredictRawVeggies
 import pandas as pd
 from recipes import getdict
-from django.template.loader import render_to_string
+
 # import app
 #from app import app
 # from app import retrieve_population_data
