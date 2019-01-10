@@ -64,40 +64,62 @@ def getRecipeByUrl(url):
 
 '''
 getRecipe : get the recipe and send it to the routes
+cuisine: string
+ingredients: list
 Return: Return the request
 '''
 def getRecipe(cuisine, ingredients):
 
+    #make everything lower case
+    ingredients= [x.lower() for x in ingredients]
+    cuisine = cuisine.lower()
+
     #get the ingredients whoes recipes we have saved
     df = pd.read_csv(os.path.join('recipes', 'recipes.csv'), skipinitialspace=True)
+    df.columns = map(str.lower, df.columns)
 
-    corn_df = df[df['Indian'].str.contains("corn")]
-    recipe_link_list = [row['Indian'] for index, row in corn_df.iterrows()]
+    #get the synonyms and append to ingredients
+    syn_df = pd.read_csv(os.path.join('recipes', 'synonyms.csv'), skipinitialspace=True)
+    syn_df.columns = map(str.lower, syn_df.columns)
 
-    print(recipe_link_list[0])
+    #if syninym found append to ingredient
+    for ingredient in ingredients:
+        try:
+            ingredients.extend(syn_df[ingredient].tolist())
+        except:
+            pass
+    # print(ingredients)
+
+    recipe_link_list = []
+    #find the recipes
+    try:
+        recipe_link_list = df[cuisine][df[cuisine].str.contains('|'.join(ingredients))].tolist()
+        print(recipe_link_list)
+    except:
+        print("not found")
 
     #make a API call and get the recipe
     # result = getRecipeByUrl(recipe_link_list[0])
     # print(result)
     #store the information
-    recipe_list = []
-    info = {}
-    try:
-        info = {'title': result.json()['title'],
-                'sourceUrl': result.json()['sourceUrl'],
-                'cookingMinutes': result.json()['cookingMinutes'],
-                'image': result.json()['image'],
-                'instructions': result.json()['instructions'],
-                'ingredients' : [key['originalString'] for key in result.json()['extendedIngredients']]
-                }
-    except:
-        print("Recipe not found")
+    # recipe_list = []
+    # info = {}
+    # try:
+    #     info = {'title': result.json()['title'],
+    #             'sourceUrl': result.json()['sourceUrl'],
+    #             'cookingMinutes': result.json()['cookingMinutes'],
+    #             'image': result.json()['image'],
+    #             'instructions': result.json()['instructions'],
+    #             'ingredients' : [key['originalString'] for key in result.json()['extendedIngredients']]
+    #             }
+    # except:
+    #     print("Recipe not found")
+    #
+    # recipe_list.append(info)
+    #
+    # print(recipe_list)
 
-    recipe_list.append(info)
-
-    print(recipe_list)
-
-    return recipe_list
+    return "recipe_list"
 
 # getRecipe('Indian', 'Tomato')
 
@@ -115,4 +137,4 @@ def getdict():
     'instructions': 'Instructionsfirstly, in a large tawa heat 1 tsp butter and saute 2 tbsp onion.',
     'ingredients': ['1 tsp butter', '2 tbsp onion finely chopped', '1 cup palak / spinach finely chopped']}]
 
-# print(Spoonacular_API_key)
+getRecipe("Indian", ["potato"])
