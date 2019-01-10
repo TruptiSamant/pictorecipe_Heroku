@@ -44,7 +44,7 @@ $(function() {
         //Show message while predicting
         for (i = 0; i < captions.length; i++) {
             captions[i].textContent = "Predicting ... ";
-            console.log(captions[i].textContent)
+            console.log(captions[i].textContent) 
         }
 
         if (/^image/.test( files[0].type)){ // only image file
