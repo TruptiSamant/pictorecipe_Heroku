@@ -5,7 +5,8 @@ import os
 import glob
 from models import PredictRawVeggies
 import pandas as pd
-from recipes import getdict
+from recipes import getRecipes, getdict, getLinksFromcsv
+from random import shuffle
 
 # import app
 #from app import app
@@ -66,12 +67,18 @@ def find_recipe():
         data = request.get_json()
         ingredients = data['ingredients']
         cuisine = data['cuisine']
-        # print(f'cuisine {cuisine}')
-        # print(f'ingredients {ingredients}')
-        # print(getdict())
+        #Get the links
+        recipe_links = getLinksFromcsv(cuisine, ingredients)
+        shuffle(recipe_links)
 
-    return jsonify({'data': render_template('recipes.html', object_list=getdict())})
+        #fine the recepies
+        recipes_list = getRecipes(recipe_links[0:2]);
+        #if any recipe found retun success
+        for recipe in recipes_list:
+            if bool(recipe):
+                return jsonify({'data': render_template('recipes.html', object_list=recipes_list)})
 
+        return json.dumps({ "error": "Cannot find the recipe" }), 500
 
 # ###########################################################################
 # ###########################################################################

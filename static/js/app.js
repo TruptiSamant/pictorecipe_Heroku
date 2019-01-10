@@ -44,7 +44,7 @@ $(function() {
         //Show message while predicting
         for (i = 0; i < captions.length; i++) {
             captions[i].textContent = "Predicting ... ";
-            console.log(captions[i].textContent) 
+            console.log(captions[i].textContent)
         }
 
         if (/^image/.test( files[0].type)){ // only image file
@@ -126,6 +126,11 @@ $(document).on("click",".recipeButton", function(){
         success: function(data) {
             $("#products").html(data['data'])
             console.log(data['data']);
+        },
+        error: function(error) {
+            $("#products")
+             .html('<div class="alert alert-danger alert-dismissible fade show"><button type="button" class="close" data-dismiss="alert">×</button><h4 class="alert-heading">Error!</h4>' + error.responseText)
+             console.log(error);
         }
     });
 });
