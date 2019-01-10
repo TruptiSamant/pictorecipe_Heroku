@@ -65,12 +65,12 @@ def find_recipe():
         print("find_recipe")
         print("-------------------------------------")
         data = request.get_json()
-        ingredients = data['ingredients']
+        ingredients = [word for line in data['ingredients'] for word in line.split()]
         cuisine = data['cuisine']
         #Get the links
         recipe_links = getLinksFromcsv(cuisine, ingredients)
-        shuffle(recipe_links)
-        print(recipe_links)
+        # shuffle(recipe_links)
+        # print(recipe_links)
 
         #fine the recepies
         recipes_list = getRecipes(recipe_links[0:2]);

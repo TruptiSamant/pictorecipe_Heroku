@@ -3,6 +3,7 @@ import pandas as pd
 from config import Spoonacular_API_key
 import os
 import glob
+import itertools
 
 
 '''
@@ -131,16 +132,21 @@ def getLinksFromcsv(cuisine="Indian", ingredients=[]):
     print(ingredients)
 
     recipe_links_list = []
-    #find the recipes
-    try:
-        recipe_links_list = df[cuisine][df[cuisine].str.contains('|'.join(ingredients))].tolist()
-        print(recipe_links_list)
-    except:
-        print("not found")
+    for ingredient in ingredients:
+        new_list = []
+        #find the recipes
+        try:
+            new_list = df[cuisine][df[cuisine].str.contains(ingredient)].tolist()
+        except:
+            print("not found")
 
+        recipe_links_list = [x for x in itertools.chain.from_iterable(itertools.zip_longest(recipe_links_list,new_list)) if x]
+
+    print(recipe_links_list)
     return recipe_links_list
 
-# getLinksFromcsv('Indian', ['Spinach'])
+
+getLinksFromcsv('Indian', ['Spinach', 'Tomato', 'onion'])
 
 '''
 getdict()
