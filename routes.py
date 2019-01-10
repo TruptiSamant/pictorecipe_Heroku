@@ -6,6 +6,7 @@ import glob
 from models import PredictRawVeggies
 import pandas as pd
 from recipes import getdict
+from django.template.loader import render_to_string
 # import app
 #from app import app
 # from app import retrieve_population_data
@@ -66,9 +67,9 @@ def find_recipe():
         cuisine = data['cuisine']
         # print(f'cuisine {cuisine}')
         # print(f'ingredients {ingredients}')
-        print(getdict())
+        # print(getdict())
 
-    return jsonify({'data': render_template('recipes.html', object_list=["hi"])})
+    return jsonify({'data': render_template('recipes.html', object_list=getdict())})
 
 
 # ###########################################################################

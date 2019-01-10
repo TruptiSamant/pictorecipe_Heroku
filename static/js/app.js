@@ -32,12 +32,20 @@ $(document).on("click", "i.del" , function() {
 	$(this).parent().remove();
 });
 
+/////////////////////////////////////////////////////////////////////////////////
 //Upload the image and predict
 $(function() {
     $(document).on("change",".image-upload", function(){
         var uploadFile = $(this);
         var files = !!this.files ? this.files : [];
         if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
+
+        var captions = document.getElementsByClassName("figure-caption");
+        //Show message while predicting
+        for (i = 0; i < captions.length; i++) {
+            captions[i].textContent = "Predicting ... ";
+            console.log(captions[i].textContent)
+        }
 
         if (/^image/.test( files[0].type)){ // only image file
             var reader = new FileReader(); // instance of the FileReader
@@ -55,7 +63,7 @@ $(function() {
             });
 
             // form_data.append('file', $('.image-upload').prop('files')[0]);
-            console.log(form_data);
+            // console.log(form_data);
 
             req = $.ajax({
                 url : '/',
@@ -93,6 +101,7 @@ $(function() {
     });
 });
 
+/////////////////////////////////////////////////////////////////////////////////////////////
 // Show the recipe when button click
 $(document).on("click",".recipeButton", function(){
     console.log('RecipeButton click ');
@@ -115,8 +124,8 @@ $(document).on("click",".recipeButton", function(){
         data: JSON.stringify({'ingredients': ingredients, 'cuisine':cuisine}),
         contentType: "application/json; charset=utf-8",
         success: function(data) {
-            $("recipes.html").add(data);
-            console.log(data);
+            $("#products").html(data['data'])
+            console.log(data['data']);
         }
     });
 });

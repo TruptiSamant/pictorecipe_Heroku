@@ -9,6 +9,7 @@ from keras.layers import Dense, Flatten, Dropout
 from keras.callbacks import ModelCheckpoint
 import numpy as np
 import pandas as pd
+from keras import backend as K
 
 class PredictRawVeggies:
 
@@ -23,7 +24,7 @@ class PredictRawVeggies:
         df_labels = df_labels.sort_values(by=['Index'])
         self.labels= list(df_labels['Label'])
         self.num_labels = len(self.labels)
-
+        K.clear_session()
         self.create_model()
 
         self.model_final._make_predict_function()

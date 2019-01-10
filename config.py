@@ -1,2 +1,2 @@
 
-Spoonacular_API_key = 'KCT4CnROiamshd68LYf7i0cs5LxWp1a0wmdjsnDdOL8WlDNtGW'
+Spoonacular_API_key = ['V6MthOQa2Umshc2XxrGVtYJLWTTgp1ltq2HjsnImE1bGSKU3pK','KCT4CnROiamshd68LYf7i0cs5LxWp1a0wmdjsnDdOL8WlDNtGW']

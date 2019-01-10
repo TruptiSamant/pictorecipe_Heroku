@@ -4,6 +4,32 @@ from config import Spoonacular_API_key
 import os
 import glob
 
+
+'''
+Get the remaining limit
+'''
+def getremainigAPIcalls():
+    for key in Spoonacular_API_key:
+        response = requests.post("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/cuisine",
+        headers={
+            "X-RapidAPI-Key": key,
+            "Content-Type": "application/x-www-form-urlencoded"
+            },
+            params={
+            "ingredientList": "",
+            "title": ""
+            }
+            )
+        try:
+            calls_remaning = response.headers['X-RateLimit-requests-Remaining']
+        except:
+            print("move on")
+
+        if (int(calls_remaning) > 0):
+            return key
+
+    return None
+
 '''
 getRecipeByUrl : query spoonacular API with the link
 Return: Return the request
@@ -17,7 +43,12 @@ def getRecipeByUrl(url):
         'ranking': 1
     }
 
-    api_key = Spoonacular_API_key
+    # Check if any limit left
+    key = getremainigAPIcalls()
+    if (key):
+        api_key = key
+    else:
+        return None
 
     endpoint = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/extract"
 
@@ -25,8 +56,10 @@ def getRecipeByUrl(url):
         "X-RapidAPI-Key": api_key
     }
 
-    r = requests.get(endpoint, params=payload, headers=headers)
-    return r
+    #send the request
+    result = requests.get(endpoint, params=payload, headers=headers)
+
+    return result
 
 
 '''
@@ -74,6 +107,12 @@ def getdict():
     'cookingMinutes': 10,
     'image': 'https://spoonacular.com/recipeImages/1047695-556x370.jpg',
     'instructions': 'Instructionsfirstly, in a large tawa heat 1 tsp butter and saute 2 tbsp onion.',
+    'ingredients': ['1 tsp butter', '2 tbsp onion finely chopped', '1 cup palak / spinach finely chopped']},
+    {'title': 'spinach corn sandwich',
+    'sourceUrl': 'https://hebbarskitchen.com/spinach-corn-sandwich-recipe/',
+    'cookingMinutes': 10,
+    'image': 'https://spoonacular.com/recipeImages/1047695-556x370.jpg',
+    'instructions': 'Instructionsfirstly, in a large tawa heat 1 tsp butter and saute 2 tbsp onion.',
     'ingredients': ['1 tsp butter', '2 tbsp onion finely chopped', '1 cup palak / spinach finely chopped']}]
 
-# print(getdict())
+print(Spoonacular_API_key)
