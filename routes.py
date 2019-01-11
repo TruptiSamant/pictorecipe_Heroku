@@ -5,19 +5,25 @@ import os
 import glob
 from models import PredictRawVeggies
 import pandas as pd
-from recipes import getRecipes, getdict, getLinksFromcsv, get_key_prod
+from recipes import getRecipes, getdict, getLinksFromcsv
 from random import shuffle
 
 # import app
 #from app import app
 # from app import retrieve_population_data
 #from app import models
+is_prod = os.environ.get('IS_HEROKU', None)
 
+if is_prod:
+    print(app.config.from_envvar('Spoonacular_API_key1', silent=True))
+else:
+    print("--------dev-----------")
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads'
+# print(process.env.Spoonacular_API_key1)
 my_pred = PredictRawVeggies()
-get_key_prod()
+# get_key_prod()
 
 
 # # Define routes ###############################################################
