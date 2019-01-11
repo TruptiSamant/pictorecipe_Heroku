@@ -202,7 +202,7 @@ nav{
     -ms-flex-align: center;
     align-items: center;
 }
-.figure-caption { 
+.figure-caption {
     font-size: 150%;
     color: #cc4b37;
     text-align: center;
@@ -455,20 +455,18 @@ margin-right: 25%;
 
 /*  show recipes button */
 .recipeButton{
-height:100%;
-width:100%;
-background-image:url("../img/showrecipe.jpg");
-background-size: cover;
-background-repeat:no-repeat;
-border-bottom: 5px solid #285e8e;
-position: relative;
-padding-bottom: 5%;
-font-size: x-large;
+    height:100%;
+    width:100%;
+    font-size:0.98rem;
+    padding-bottom:10px;
+    background-image:url("../img/showrecipe.jpg");
+    background-size: cover;
+    background-repeat:no-repeat;
 }
 
 .recipeButton:hover {
-    top: 2.5px;
-    border-bottom-width: 2.5px;
+ width: 140%;
+ height: 100%;
 }
 .recipeButton:active {
     top: 5px;
