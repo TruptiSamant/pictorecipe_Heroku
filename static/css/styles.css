@@ -473,6 +473,6 @@ font-size: x-large;
 .recipeButton:active {
     top: 5px;
 }
-#recipeDisplay, #products {
+#recipeDisplay, #products { 
     padding-top: 4%;
 }

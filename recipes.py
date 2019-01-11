@@ -62,7 +62,6 @@ def getRecipeByUrl(url):
         'number': 2,
         'ranking': 1
     }
-
     # Check if any limit left
     key = getremainigAPIcalls()
     if (key):
@@ -71,14 +70,9 @@ def getRecipeByUrl(url):
         return None
 
     endpoint = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/extract"
-
-    headers={
-        "X-RapidAPI-Key": api_key
-    }
-
+    headers={ "X-RapidAPI-Key": api_key  }
     #send the request
     result = requests.get(endpoint, params=payload, headers=headers)
-
     return result
 
 
@@ -129,12 +123,12 @@ def getLinksFromcsv(cuisine="Indian", ingredients=[]):
     #get the ingredients whoes recipes we have saved
     df = pd.read_csv(os.path.join('recipes', 'recipes.csv'), skipinitialspace=True)
     df.columns = map(str.lower, df.columns)
-    df.dropna(inplace=True)
+    df.fillna(value=" ", inplace=True)
 
     #get the synonyms and append to ingredients
     syn_df = pd.read_csv(os.path.join('recipes', 'synonyms.csv'), skipinitialspace=True)
     syn_df.columns = map(str.lower, syn_df.columns)
-    syn_df.dropna(inplace=True)
+    syn_df.fillna(value="", inplace=True)
     # print(syn_df)
 
     #if syninym found append to ingredient
@@ -143,8 +137,8 @@ def getLinksFromcsv(cuisine="Indian", ingredients=[]):
             ingredients.extend(syn_df[ingredient].tolist())
         except:
             pass
-    print(ingredients)
-    # print(df[cuisine].str.contains(ingredient))
+    # print(ingredients)
+    # print(df[cuisine])
 
     recipe_links_list = []
     for ingredient in ingredients:
@@ -159,9 +153,7 @@ def getLinksFromcsv(cuisine="Indian", ingredients=[]):
 
     print(recipe_links_list)
     return recipe_links_list
-
-
-# getLinksFromcsv('Mexican', ['tomato'])
+# getLinksFromcsv('Italian', ['tomatoes'])
 
 '''
 getdict()
