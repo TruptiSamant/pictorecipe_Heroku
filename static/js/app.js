@@ -128,8 +128,8 @@ $(document).on("click",".recipeButton", function(){
             console.log(data['data']);
         },
         error: function(error) {
-            $("#products")
-             .html('<div class="alert alert-danger alert-dismissible fade show"><button type="button" class="close" data-dismiss="alert">×</button><h4 class="alert-heading">Error!</h4>' + error)
+            $("#products").html('<br><br><h4 style="color:red;">'+error.responseText+'</h4>')
+                // '<div class="alert alert-danger alert-dismissible fade show"><button type="button" class="close" data-dismiss="alert">×</button><h4 class="alert-heading">Error!</h4> + error')
              console.log(error);
         }
     });
