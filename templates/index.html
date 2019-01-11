@@ -30,12 +30,14 @@
         </div>
        <div class="col-lg-3 col-sm-3 cuisines ">
            <select id="cuisine_dd">
+               <option value="edamam">edamam</option>
                 {% for each in cuisines %}
                   <option value="{{each}}">{{each}}</option>
                 {% endfor %}
             </select>
         </div>
    </div>
+   {% include "edamam.html" %}
    {% include "recipes.html" %}
 </div>
 <div>
