@@ -116,12 +116,13 @@ def getLinksFromcsv(cuisine="Indian", ingredients=[]):
     #get the ingredients whoes recipes we have saved
     df = pd.read_csv(os.path.join('recipes', 'recipes.csv'), skipinitialspace=True)
     df.columns = map(str.lower, df.columns)
+    df.dropna(inplace=True)
 
     #get the synonyms and append to ingredients
     syn_df = pd.read_csv(os.path.join('recipes', 'synonyms.csv'), skipinitialspace=True)
     syn_df.columns = map(str.lower, syn_df.columns)
     syn_df.dropna(inplace=True)
-    print(syn_df)
+    # print(syn_df)
 
     #if syninym found append to ingredient
     for ingredient in ingredients:
@@ -130,6 +131,7 @@ def getLinksFromcsv(cuisine="Indian", ingredients=[]):
         except:
             pass
     print(ingredients)
+    # print(df[cuisine].str.contains(ingredient))
 
     recipe_links_list = []
     for ingredient in ingredients:
@@ -146,7 +148,7 @@ def getLinksFromcsv(cuisine="Indian", ingredients=[]):
     return recipe_links_list
 
 
-getLinksFromcsv('Indian', ['green', 'pepper', 'tomato', 'red', 'onion', 'bell pepper'])
+getLinksFromcsv('Mexican', ['tomato'])
 
 '''
 getdict()
