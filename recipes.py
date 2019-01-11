@@ -4,7 +4,7 @@ from config import Spoonacular_API_key
 import os
 import glob
 import itertools
-from boto.s3.connection import S3Connection
+# from boto.s3.connection import S3Connection
 
 # def get_key_prod():
 #     API_KEYS = S3Connection(os.environ['Spoonacular_API_key1'], os.environ['Spoonacular_API_key1'])
