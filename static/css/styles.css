@@ -202,7 +202,7 @@ nav{
     -ms-flex-align: center;
     align-items: center;
 }
-.figure-caption {
+.figure-caption { 
     font-size: 150%;
     color: #cc4b37;
     text-align: center;
@@ -473,6 +473,6 @@ font-size: x-large;
 .recipeButton:active {
     top: 5px;
 }
-#recipeDisplay, #products { 
+#recipeDisplay, #products {
     padding-top: 4%;
 }
