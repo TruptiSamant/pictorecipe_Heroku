@@ -90,8 +90,23 @@ nav{
 }
 .upload-options:hover {
   background-color: rgba(195, 230, 230, 0.993);
-  transform: rotate(3deg);
+  animation: shake 0.5s;
+  animation-iteration-count: infinite;
   box-shadow: 1px 1px 2px rgba(113, 113, 113, 0.35);
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 .upload-options input {
     width: 100%;
@@ -441,8 +456,22 @@ margin-right: 25%;
 /*  show recipes button */
 .recipeButton{
 height:100%;
-width:120%;
+width:100%;
 background-image:url("../img/showrecipe.jpg");
 background-size: cover;
 background-repeat:no-repeat;
+border-bottom: 5px solid #285e8e;
+position: relative;
+padding-bottom: 5%;
+}
+
+.recipeButton:hover {
+    top: 2.5px;
+    border-bottom-width: 2.5px;
+}
+.recipeButton:active {
+    top: 5px;
+}
+#recipeDisplay, #products {
+    padding-top: 4%;
 }

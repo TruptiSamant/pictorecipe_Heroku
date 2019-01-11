@@ -119,7 +119,7 @@ $(document).on("click",".recipeButton", function(){
         edaman_api(ingredients);
     }
     else{
-        $('#mainContainer').html('<div class="row"><div class="col-md-9"><div id="recipeDisplay" class="col-md-12"></div></div></div><div class="row"><div class="col-md-12 panel"><div class="panel panel-default"></div></div></div>')
+        $('#mainContainer').html('<div class="container" id="mainContainer"><div class="row"><div class="col-md-9"><div id="recipeDisplay" class="col-md-12"></div></div></div></div>')
         req = $.ajax({
             url : '/find_recipe',
             type : 'POST',
