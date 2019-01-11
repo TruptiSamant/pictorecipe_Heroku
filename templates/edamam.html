@@ -1,0 +1,59 @@
+{% block edamam %}
+  <!-- API -->
+
+  <div class="container" id="mainContainer">
+		<div class="row" id="topRow">
+			<!-- <div class="col-md-12"> -->
+				<div class="panel panel-default">
+				<div class="col-md-6">
+				</div>
+				<div class="col-md-6">
+					</div>
+				</div>
+			<!-- </div> -->
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3>Search for Recipes</h3>
+						</div>
+						<div class="panel-body">
+							<form>
+								<div class="form-group">
+									<!-- <input type="search" class="form-control" id="ingredientsSearchBar" placeholder="Ex. Kale"> -->
+									<button type="submit" class="btn btn-default" id="ingredientsSearchBtn">Search</button>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+					  <div class="panel panel-default">
+					    <div class="panel-heading" role="tab" id="headingOne">
+					      <h4 class="panel-title">
+									Current ingredients
+					      </h4>
+							</div>
+							<div class="panel-body" id="ingredients-list"></div>
+					  </div>
+					</div>
+				</div>
+				<div>
+				</div>
+			</div>
+			<div class="col-md-9">
+				<div id="recipeDisplay" class="col-md-12">
+        		</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+
+				<div class="panel panel-default">
+				</div>
+
+			</div>
+		</div>
+	</div>
+{% endblock %}

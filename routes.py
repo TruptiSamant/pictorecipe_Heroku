@@ -48,11 +48,11 @@ def index():
         return jsonify({'result': 'success', 'predictions': predictions})
     else:
         # Get the cusines from the file list
-        cuisines_list = glob.glob("recipes/*.csv")
+        cuisines_list = glob.glob("recipes/recipes.csv")
         print(cuisines_list)
         cuisines_df = pd.read_csv(cuisines_list[0])
 
-        print(list(cuisines_df))
+        print(list(cuisines_df)[1:])
 
     return render_template('index.html', cuisines = list(cuisines_df)[1:])
 

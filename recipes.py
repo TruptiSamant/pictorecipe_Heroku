@@ -146,7 +146,7 @@ def getLinksFromcsv(cuisine="Indian", ingredients=[]):
     return recipe_links_list
 
 
-getLinksFromcsv('Indian', ['Spinach', 'Tomato', 'onion'])
+getLinksFromcsv('Indian', ['green', 'pepper', 'tomato', 'red', 'onion', 'bell pepper'])
 
 '''
 getdict()
