@@ -12,6 +12,7 @@ def getAPIkeys():
     Spoonacular_API_key.append(os.environ.get('Spoonacular_API_key1') if os.environ.get('Spoonacular_API_key2') else config.Spoonacular_API_key1)
     Spoonacular_API_key.append(os.environ.get('Spoonacular_API_key2') if os.environ.get('Spoonacular_API_key2') else config.Spoonacular_API_key2)
     Spoonacular_API_key.append(os.environ.get('Spoonacular_API_key3') if os.environ.get('Spoonacular_API_key2') else config.Spoonacular_API_key3)
+    Spoonacular_API_key.append(os.environ.get('Spoonacular_API_key4') if os.environ.get('Spoonacular_API_key2') else config.Spoonacular_API_key4)
 
     print(Spoonacular_API_key)
 
