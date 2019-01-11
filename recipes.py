@@ -6,13 +6,25 @@ import glob
 import itertools
 # from boto.s3.connection import S3Connection
 
+def getAPIkeys():
+    Spoonacular_API_key = []
 
+    Spoonacular_API_key.append(os.environ.get('Spoonacular_API_key1') if os.environ.get('Spoonacular_API_key2') else config.Spoonacular_API_key1)
+    Spoonacular_API_key.append(os.environ.get('Spoonacular_API_key2') if os.environ.get('Spoonacular_API_key2') else config.Spoonacular_API_key2)
+    Spoonacular_API_key.append(os.environ.get('Spoonacular_API_key3') if os.environ.get('Spoonacular_API_key2') else config.Spoonacular_API_key3)
+
+    print(Spoonacular_API_key)
+
+    return Spoonacular_API_key
+
+# getAPIkeys()
 '''
 Get the remaining limit
 '''
 def getremainigAPIcalls():
+
     #loop through API keys
-    for key in Spoonacular_API_key:
+    for key in getAPIkeys():
         #make tiny request
         response = requests.post("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/cuisine",
         headers={
@@ -168,3 +180,4 @@ def getdict():
     'image': 'https://hebbarskitchen.com/wp-content/uploads/mainPhotos/onion-tomato-chutney-recipe-tomato-onion-chutney-recipe-1.jpeg',
     'instructions': 'Instructionsfirstly, in a large tawa heat 1 tsp butter and saute 2 tbsp onion.',
     'ingredients': ['1 tsp butter', '2 tbsp onion finely chopped', '1 cup palak / spinach finely chopped']}]
+# print(config.Spoonacular_API_key2)
