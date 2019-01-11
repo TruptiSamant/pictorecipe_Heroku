@@ -148,7 +148,7 @@ def getLinksFromcsv(cuisine="Indian", ingredients=[]):
     return recipe_links_list
 
 
-getLinksFromcsv('Mexican', ['tomato'])
+# getLinksFromcsv('Mexican', ['tomato'])
 
 '''
 getdict()

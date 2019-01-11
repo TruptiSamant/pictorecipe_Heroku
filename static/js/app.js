@@ -115,7 +115,7 @@ $(document).on("click",".recipeButton", function(){
     var cuisine = e.options[e.selectedIndex].value;
     console.log(cuisine);
 
-    if(cuisine=='edamam'){
+    if(cuisine=='Global'){ //This name is defined in index.html
         edaman_api(ingredients);
     }
     else{
@@ -146,19 +146,22 @@ $(document).on("click",".recipeButton", function(){
 //////////////////////////////////////////////////////////////////////////////////////////
 function edaman_api(items){
    $('#products').html('')
-   var url = 'https://api.edamam.com/search?q=' + items + '&app_id=b8fa8ec0&app_key=2e99e135530eaed01cb9620b24c1f1c0';
+   var url = 'https://api.edamam.com/search?q=' + items + '&app_id=b8fa8ec0&app_key=2e99e135530eaed01cb9620b24c1f1c0&health=vegan';
    function displayRecipes() {
    d3.json(url).then(function(response) {
        // console.log(response.hits[0]["recipe"]["label"])
        var results = response.hits;
 
+
        $('#recipeDisplay').html('');
        var recipeTitle = []
-       console.log(results.length)
+       console.log(results[i])
        for (i = 0; i < results.length; i++) {
+           console.log(response.hits[0]);
            var recipeImage = $('<img>');
            var recipeDiv = $('<div>');
            var recipeCaption = $('<div>');
+           var recipeIngradient = $('<div>');
            var recipeBtnDiv = $('<div>');
            var intCalories = (results[i].recipe.calories)/(results[i].recipe.yield);
            var calories = (Math.floor(intCalories));
@@ -167,6 +170,12 @@ function edaman_api(items){
 
            //recipeCaption.addClass('text-center');
            recipeCaption.append($('<p>').text(results[i].recipe.label).addClass('recipeName'))
+           //recipe Ingradient
+           recipeIngradient.append($('<p style="font-weight: bold;">').text("Ingredients").addClass('recipeName'))
+           for(j=0; j <results[i].recipe.ingredients.length; j++){
+                console.log(results[i].recipe.ingredients[j].text)
+               recipeIngradient.append($('<p>').text(results[i].recipe.ingredients[j].text).addClass('recipeName'))
+           }
            caloriesP.text(calories + ' Calories');
            recipeCaption.append(caloriesP)
            recipeImage.attr('src', results[i].recipe.image);
@@ -176,16 +185,25 @@ function edaman_api(items){
            recipeDiv.append(recipeImage);
            recipeDiv.addClass('image-center');
            recipeTitle.push(results[i]["recipe"]["label"])
-           // recipeCaption.append($('<div>').text(results[i].recipe.label).addClass('recipeName')); */}
+           // recipeCaption.append($('<div>').text(results[i].recipe.label).addClass('recipeName'));
            recipeCaption.addClass('text-center');
            recipeDiv.append(recipeCaption);
+
+           recipeIngradient.addClass('text-center');
+           recipeDiv.append(recipeIngradient);
+
            recipeBtnDiv.append($('<a>').append($('<button>').addClass('btn recipeBtn').text('Go to recipe')).attr('href',results[i].recipe.url).attr('target','_blank'));
            recipeCaption.append(recipeBtnDiv);
+           recipeIngradient.append(recipeBtnDiv);
+
            $('#recipeDisplay').prepend(recipeDiv);
        }
        console.log(recipeTitle)
        //console.log(recipeCaption)
    })
+   .catch(() => {
+       $("#products").html('<br><br><h6 style="color:red;">An error has occurred. Try again later</h6>')
+      })
    };
    displayRecipes();
 }
