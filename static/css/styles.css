@@ -203,7 +203,7 @@ nav{
     align-items: center;
 }
 .figure-caption {
-    font-size: 100%;
+    font-size: 150%;
     color: #cc4b37;
     text-align: center;
     font-weight: bold;
@@ -321,8 +321,8 @@ section h3.section-subheading {
 }
 
 .btn-primary {
-  background-color: #fed136;
-  border-color: #fed136;
+    background-color: yellow;
+    border-color: white;
 }
 
 
@@ -463,6 +463,7 @@ background-repeat:no-repeat;
 border-bottom: 5px solid #285e8e;
 position: relative;
 padding-bottom: 5%;
+font-size: x-large;
 }
 
 .recipeButton:hover {
