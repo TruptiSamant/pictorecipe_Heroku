@@ -23,20 +23,33 @@
         </div>
     </form><!-- col-2 -->
     <i class="fa fa-plus imgAdd"></i>
+</div>
+<div class="row">
+    <div class="col-md-12 panel">
+        <div class="panel panel-default">
+        </div>
+    </div>
 </div><!-- row -->
-   <div class="row">
-       <div class="col-lg-3 col-sm-3 recipe">
-           <button class="btn btn-primary float-right recipeButton" image_id="image"> Show Recipes </button>
+<div class="row">
+   <div class="col-lg-3 col-sm-3 recipe">
+       <button class="btn btn-primary float-right recipeButton" image_id="image"> Show Recipes </button>
+    </div>
+   <div class="col-lg-3 col-sm-3 cuisines ">
+       <select id="cuisine_dd">
+           <option value="edamam">edamam</option>
+            {% for each in cuisines %}
+              <option value="{{each}}">{{each}}</option>
+            {% endfor %}
+        </select>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 panel">
+        <br><br>
+        <div class="panel panel-default">
         </div>
-       <div class="col-lg-3 col-sm-3 cuisines ">
-           <select id="cuisine_dd">
-               <option value="edamam">edamam</option>
-                {% for each in cuisines %}
-                  <option value="{{each}}">{{each}}</option>
-                {% endfor %}
-            </select>
-        </div>
-   </div>
+    </div>
+</div><!-- row -->
    {% include "edamam.html" %}
    {% include "recipes.html" %}
 </div>
