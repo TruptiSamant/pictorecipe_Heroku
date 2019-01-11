@@ -1,20 +1,11 @@
 import requests
 import pandas as pd
-
+import config
 import os
 import glob
 import itertools
 # from boto.s3.connection import S3Connection
 
-# def get_key_prod():
-#     API_KEYS = S3Connection(os.environ['Spoonacular_API_key1'], os.environ['Spoonacular_API_key1'])
-#     print(s3)
-is_prod = os.environ.get('IS_HEROKU', None)
-
-if is_prod:
-    print(app.config.from_envvar('Spoonacular_API_key1', silent=True))
-else:
-    from config import Spoonacular_API_key
 
 '''
 Get the remaining limit
