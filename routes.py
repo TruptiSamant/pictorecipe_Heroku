@@ -5,7 +5,7 @@ import os
 import glob
 from models import PredictRawVeggies
 import pandas as pd
-from recipes import getRecipes, getdict, getLinksFromcsv
+from recipes import getRecipes, getdict, getLinksFromcsv, get_key_prod
 from random import shuffle
 
 # import app
@@ -17,6 +17,7 @@ from random import shuffle
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads'
 my_pred = PredictRawVeggies()
+get_key_prod()
 
 
 # # Define routes ###############################################################
