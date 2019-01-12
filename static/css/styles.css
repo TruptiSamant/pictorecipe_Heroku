@@ -474,3 +474,8 @@ margin-right: 25%;
 #recipeDisplay, #products {
     padding-top: 4%;
 }
+
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+    background-color: #2f6919;
+}
