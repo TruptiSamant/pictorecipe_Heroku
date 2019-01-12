@@ -14,7 +14,7 @@ def getAPIkeys():
     Spoonacular_API_key.append(os.environ.get('Spoonacular_API_key3') if os.environ.get('Spoonacular_API_key2') else config.Spoonacular_API_key3)
     Spoonacular_API_key.append(os.environ.get('Spoonacular_API_key4') if os.environ.get('Spoonacular_API_key2') else config.Spoonacular_API_key4)
 
-    print(Spoonacular_API_key)
+    # print(Spoonacular_API_key)
 
     return Spoonacular_API_key
 
@@ -25,7 +25,8 @@ Get the remaining limit
 def getremainigAPIcalls():
 
     #loop through API keys
-    for key in getAPIkeys():
+    Spoonacular_API_key = getAPIkeys()
+    for key in Spoonacular_API_key:
         #make tiny request
         response = requests.post("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/cuisine",
         headers={
@@ -47,8 +48,9 @@ def getremainigAPIcalls():
         #Return the key only if there are calls remainig
         if (int(calls_remaning) > 0):
             return key
-
-    return None
+    # print(Spoonacular_API_key[0])
+    return Spoonacular_API_key[0] #only for today
+# print(getremainigAPIcalls())
 
 '''
 getRecipeByUrl : query spoonacular API with the link
