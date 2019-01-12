@@ -107,7 +107,7 @@ $(document).on("click",".recipeButton", function(){
     console.log('RecipeButton click ');
     $('#products').html('<h6 class="wait"><strong>Please wait ... </strong><h6>')
     var ingredients = []
-    let captions = document.getElementsByClassName("figure-caption")
+    let captions = document.getElementsByClassName("figure-caption")  
     for (i = 0; i < captions.length; i++) {
         ingredients.push(captions[i].textContent)
     }
