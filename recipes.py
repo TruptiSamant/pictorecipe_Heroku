@@ -138,7 +138,7 @@ def getLinksFromcsv(cuisine="Indian", ingredients=[]):
             ingredients.extend(syn_df[ingredient].tolist())
         except:
             pass
-    ingredients=list(filter(None, ingredients))        
+    ingredients=list(filter(None, ingredients))
     print(ingredients)
     # print(df[cuisine])
 
@@ -155,7 +155,7 @@ def getLinksFromcsv(cuisine="Indian", ingredients=[]):
 
     print(recipe_links_list)
     return recipe_links_list
-getLinksFromcsv('Italian', ['mushroom','corn','tomato'])
+# getLinksFromcsv('Italian', ['mushroom','corn','tomato'])
 
 '''
 getdict()

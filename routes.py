@@ -69,7 +69,7 @@ def find_recipe():
         # print(recipe_links)
 
         #fine the recepies
-        recipes_list = getRecipes(recipe_links[0:2]);
+        recipes_list = getRecipes(recipe_links[0:3]);
         #if any recipe found retun success
         for recipe in recipes_list:
             if bool(recipe):
