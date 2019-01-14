@@ -49,7 +49,7 @@ def getremainigAPIcalls():
         if (int(calls_remaning) > 0):
             return key
     # print(Spoonacular_API_key[0])
-    return Spoonacular_API_key[0] #only for today
+    return False #Spoonacular_API_key[0] #only for today
 # print(getremainigAPIcalls())
 
 '''
